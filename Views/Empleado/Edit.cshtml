@@ -1,0 +1,155 @@
+@model PruebaT.Models.Empleado
+<section class="content-header">
+    <h1>
+    Crear Empleado
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+
+<div class="box">
+    <div class="box-body">    
+        <form asp-action="Edit" method="post">
+            <div class="form-horizontal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <br>  
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label asp-for="DPI">Número de DPI</label>
+                            <input type= "number"asp-for="DPI" class="form-control" />
+                            <span asp-validation-for="DPI" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-5">
+                        <label asp-for="NombreCompleto">Nombre Completo</label>
+                            <input asp-for="NombreCompleto" class="form-control" />
+                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                        <label asp-for="cantidadHijos">Hijos</label>
+                            <input asp-for="cantidadHijos" id="Chijos"class="form-control" />
+                            <span asp-validation-for="cantidadHijos" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-5">
+                        <label asp-for="SALARIOBASE">Salario Base</label>
+                            <input asp-for="SALARIOBASE" id="salariobase" class="form-control" />
+                            <span asp-validation-for="SALARIOBASE" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                            <label>Bono Decreto</label>
+                            <input asp-for="BonoDecreto" id="BonoDecreto" value =" 0.00" class="form-control" readonly />
+                            <span asp-validation-for="BonoDecreto" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                                <label>IGSS</label>
+                                <input asp-for="Iggs" id="Iggs" value =" 0.00" class="form-control" readonly />
+                                <span asp-validation-for="Iggs" class="text-danger"></span>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-5">
+                            <label>IRTRA</label>
+                            <input asp-for="Irtra" id="Irtra" value =" 0.00" class="form-control" readonly />
+                            <span asp-validation-for="Irtra" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    
+                    <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                            <label>Bono Paternidad</label>
+                            <input asp-for="BonoPaterniad" id="BonoPaterniad" value =" 0.00" class="form-control" readonly />
+                            <span asp-validation-for="BonoPaterniad" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                            <label>Salario Total</label>
+                            <input asp-for="SalarioTotal" id="SalarioTotal" value =" 0.00" class="form-control" readonly />
+                            <span asp-validation-for="SalarioTotal" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-5">
+                            <label>Salario Liquido</label>
+                            <input asp-for="SalarioLiquido" id="SalarioLiquido" value =" 0.00" class="form-control" readonly />
+                            <span asp-validation-for="SalarioLiquido" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
+                            <input type="submit" value="Guardar" class="btn btn-default" />
+                        </div>
+                        <div class="col-md-2">
+                            <a asp-action="Index">Regresar a lista</a>
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+</section>
+
+@section Scripts {
+<script type="text/javascript">
+
+$( "#salariobase" ).blur(function() {
+
+    var salariobase = $('#salariobase').val();
+    
+    var bonodecreto = 250.00;
+    $("#BonoDecreto").val(bonodecreto.toFixed(2));
+
+    var igss = salariobase * 0.0483;
+
+    $("#Iggs").val(igss.toFixed(2));
+
+    var Irtra = salariobase * 0.01
+
+    $("#Irtra").val(Irtra.toFixed(2));
+
+    var bonopaternidad = 133 * $('#Chijos').val()
+
+    $("#BonoPaterniad").val(bonopaternidad.toFixed(2));
+
+    var salarioT = parseFloat(salariobase) + parseFloat(bonodecreto) + parseFloat(bonopaternidad);
+
+    $("#SalarioTotal").val(salarioT.toFixed(2));
+
+    var salarioLiquido = salarioT - (igss + Irtra)
+
+    $("#SalarioLiquido").val(salarioLiquido.toFixed(2));
+
+});
+
+</script>
+}

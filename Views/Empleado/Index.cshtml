@@ -1,0 +1,53 @@
+@model IEnumerable<PruebaT.Models.Empleado>
+<section class="content-header">
+    <h1>
+    Listado de Empleados
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+<a asp-action="Create" class="btn btn-success"><i class="fa fa-users"></i>Nuevo Empleado</a>
+
+<div class="box">
+<br>
+    <table class="table table-bordered table-striped dataTable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NombreCompleto)</th>
+            <th>@Html.DisplayNameFor(model => model.DPI)</th>
+            <th>@Html.DisplayNameFor(model => model.cantidadHijos)</th>
+            <th>@Html.DisplayNameFor(model => model.SALARIOBASE)</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            
+            <td>
+            @Html.DisplayFor(modelItem => item.NombreCompleto)
+              </td>
+            
+            <td>
+            @Html.DisplayFor(modelItem => item.DPI)
+             </td>
+            
+            <td>
+            @Html.DisplayFor(modelItem => item.cantidadHijos)
+            </td>
+
+            <td>
+             @Html.DisplayFor(modelItem => item.SALARIOBASE)
+             </td>
+
+            <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            </td>
+        </tr>
+        }
+    </tbody>
+    </table>
+</div>
+
+</section>

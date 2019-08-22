@@ -1,0 +1,35 @@
+CREATE USER 'pruebaTecnica'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'pruebaTecnica'@'localhost';
+
+
+create database pruebatecnica;
+
+Create Table Usuario(
+Id int not null primary Key AUTO_INCREMENT,
+Nombre varchar(100) not null,
+Email varchar(100) not null unique, 
+FechaNacimiento date, 
+PASSWORD varchar(30) not null, 
+token varchar(64)
+); 
+
+create table Empleado
+(
+Id int not null primary key AUTO_INCREMENT,
+DPI Bigint(16) not null unique,
+NombreCompleto varchar(100) not null,
+cantidadHijos SMALLINT not null,
+SALARIOBASE decimal(7,2),
+BonoDecreto decimal(5,2),
+Iggs decimal(5,2),
+Irtra decimal(5,2),
+BonoPaterniad decimal(5,2),
+SalarioTotal decimal(7,2),
+SalarioLiquido decimal(7,2),
+Creado_por varchar(50)not null,
+Fecha_Creacion TIMESTAMP
+);
+
+INSERT INTO `usuario` (`Id`, `Nombre`, `Email`, `FechaNacimiento`, `PASSWORD`, `token`) VALUES (NULL, 'Maria', 'maria@gmail.com', '1991-08-06', 'maria', NULL), (NULL, 'marcos', 'marcos@gmail.com', '1998/05/10', 'marcos12345', NULL);
+
+INSERT INTO `empleado` (`Id`, `DPI`, `NombreCompleto`, `cantidadHijos`, `SALARIOBASE`, `BonoDecreto`, `Iggs`, `Irtra`, `BonoPaterniad`, `SalarioTotal`, `SalarioLiquido`, `Creado_por`, `Fecha_Creacion`) VALUES (NULL, '2078045432202', 'Persona de Prueba 1', '1', '1000', '250', '4.83', '1', '133', '1383', '1353', 'usuario', CURRENT_TIMESTAMP), (NULL, '20785645323412', 'Maria Angelica Ortega Ramirez', '2', '1000', '250', '40.83', '10', '266', '1516', '1467', 'usuario', CURRENT_TIMESTAMP)

@@ -1,0 +1,34 @@
+@model PruebaT.Models.ViewModel.RestaurarPass
+<div class="row">
+    
+    <div class="col-md-6 offset-3">
+        <div class="form-style">
+             <form asp-action="RecuperarPass" method="post">
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <label asp-for="email">Correo Electronico</label>
+                            <input asp-for="email" class="form-control" />
+                            <span asp-validation-for="email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <label asp-for="FechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" asp-for="FechaNacimiento" class="form-control" />
+                            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
+                            <input type="submit" value="Login" class="btn btn-success" />
+                        </div>
+                    </div>
+            </form>
+            <span class="text-success">@ViewBag.success</span>
+            <span class="text-danger">@ViewBag.error</span>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,45 @@
+@model PruebaT.Models.Empleado
+<section class="content-header">
+        <div class="col-md-2">
+                            <a asp-action="Index">Regresar a lista</a>
+                        </div>
+    <h1>
+    Detalle de @Model.NombreCompleto
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+<div class="container">
+<br>
+<div class="row">
+    <h5>Numero DPI: @Model.DPI</h5>  
+</div>
+<div class="row">
+    <h5>Numero de Hijos: @Model.cantidadHijos</h5> 
+</div>
+<div class ="text-center">
+    <h4 class="text-primary"> Informacion finaciera</h4>
+
+    <h5 class="text-danger">Descuentos</h5>
+
+<br>
+    <h6>Pago de Iggs: @Model.Iggs</h6> 
+    <h6>Pago de Irtra: @Model.Irtra</h6> 
+<br>    
+    <h5 class="text-success">Bonos</h5>
+
+<br>
+    <h6>Bono Decreto: @Model.BonoDecreto</h6>
+    <h6>Bono Paternidad: @Model.BonoPaterniad</h6> 
+   <br> 
+    <h5 class="text-warning">Salario</h5>
+
+<br>
+    <h6>Salario Base: @Model.SALARIOBASE</h6>
+    <h6>Salario Total: @Model.SalarioTotal</h6>
+<br>
+    <h3 class="text-success">Salario Liquido: Q @Model.SalarioLiquido</h3>
+</div>    
+
+</div>
+</section>
